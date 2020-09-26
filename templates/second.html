@@ -1,12 +1,12 @@
-{% extends "base.html" %}
+{% extends 'index.html' %}
 
 {% block content %}
-<button class="btn" type="button">
-    <a href="{% url 'erp:Template1' %}"> Ir al Template 1</a>
-</button>
 
-{% for product in data %}
-        <h2> {{product.name}}</h2>
-        <h3> {{product.name}} got this ID: {{product.id}} and belongs to {{product.cate.name}} category</h3>
-    {% endfor %}
+    <a href="{% url 'erp:vista2' %}">Click</a>
+
+    <ul>
+        {% for product in products %}
+            <li>{{ product.id }} / {{ product.name }} / {{ product.cate.name }}</li>
+        {% endfor %}
+    </ul>
 {% endblock %}

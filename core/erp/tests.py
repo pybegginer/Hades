@@ -1,16 +1,11 @@
 from config.wsgi import *
-from core.erp.models import Type
+from core.erp.models import *
 
-#Crear algunas consultas
-# TypeList = ['Ingeniero', 'Analista', 'Senior', 'Backend Developer', 'Frontend']
-#
-# for i in TypeList:
-#     newType = Type()
-#     newType.name=i
-#     newType.save()
-#     print(f'Se han creado el tipo {i}')
-#
-#----Listar filtrado
-k = Type.objects.filter(name__icontains='eN')
+data = ['Leche y derivados', 'Carnes, pescados y huevos', 'Patatas, legumbres, frutos secos',
+        'Verduras y Hortalizas', 'Frutas', 'Cereales y derivados, azúcar y dulces',
+        'Grasas, aceite y mantequilla']
 
-
+for i in data:
+    cat = Category(name=i)
+    cat.save()
+    print('Guardado registro N°{}'.format(cat.id))
