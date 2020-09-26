@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="icon" href="{% static 'img/icon.svg' %}">
+        <meta charset="UTF-8">
+        <title>My bootstrap page</title>
+        <link rel="stylesheet" href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}">
+        <script src="{% static 'lib/bootstrap/js/popper.min.js' %}"></script>
+        <script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    </head>
+    <body>
+
+    {% block content %}
+
+    <button type="button" class="btn btn-success">
+            <a href="{% url 'erp:Template2' %}"> Template 2</a>
+    </button>
+    <img src="" alt="">
+    {% endblock %}
+    </body>
+</html>
