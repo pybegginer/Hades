@@ -1,11 +1,11 @@
 {% extends "body.html" %}
 {% load static %}
 {% block head %}
-    <link rel="stylesheet" type="text/css" href='{% static "lib/DataTables/datatables.min.css" %}'>
-    <script type="text/javascript" src='{% static "lib/DataTables/datatables.min.js" %}'></script>
-    <script src="{% static 'lib/DataTables/DataTables-1.10.22/js/dataTables.bootstrap4.min.js' %}"></script>
-    <script src="{% static 'lib/DataTables/responsive-2.2.6/js/dataTables.responsive.min.js' %}"></script>
-    <script src="{% static 'lib/DataTables/responsive-2.2.6 /js/responsive.bootstrap4.min.js' %}"></script>
+<link rel="stylesheet" type="text/css" href='{% static "lib/DataTables/datatables.min.css" %}'>
+<script type="text/javascript" src='{% static "lib/DataTables/datatables.min.js" %}'></script>
+<script src="{% static 'lib/DataTables/DataTables-1.10.22/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'lib/DataTables/responsive-2.2.6/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'lib/DataTables/responsive-2.2.6/js/responsive.bootstrap4.min.js' %}"></script>
 {% endblock %}
 
 
@@ -32,7 +32,7 @@
             </tbody>
         </table>
         <div class="card-footer">
-            <button type="button" class="btn btn-primary btn-flat">
+            <button type="button" class="btn btn-primary btn-flat btnTest">
                 <i class="fas fa-plus"></i> Agregar registro
             </button>
         </div>
@@ -44,14 +44,28 @@
 
 
 {% block javascript %}
-    <script type="application/javascript">
-        $('#data').DataTable({
-            responsive: true,
-            autoWidth: false,
-            "language": {
-                url: '{% static "lib/DataTables/spanish.txt" %}'
-            }
-        });
-    </script>
-{% endblock %}
+<script type="application/javascript">
+        $(function () {
+            $('#data').DataTable({
+                responsive: true,
+                autoWidth: false
+            });
 
+            $('.btnTest').on('click', function () {
+                $.ajax({
+                    url: '{% url 'erp:category_list' %}',
+                    type: 'POST',
+                    data: {id: 1},
+                    dataType: 'json'
+                }).done(function (data) {
+                    console.log(data);
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    alert(textStatus+': '+errorThrown);
+                }).always(function (data) {
+
+                });
+            });
+        });
+
+</script>
+{% endblock %}

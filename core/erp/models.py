@@ -1,6 +1,8 @@
 from django.db import models
 from datetime import datetime
 
+from django.forms import model_to_dict
+
 from core.erp.choices import gender_choices
 
 
@@ -9,6 +11,9 @@ class Category(models.Model):
 
     def __str__(self):
         return 'Nombre: {}'.format(self.name)
+
+    def toJson(self):
+        return model_to_dict(self)
 
     class Meta:
         verbose_name = 'Categoria'

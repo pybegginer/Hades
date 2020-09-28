@@ -1,0 +1,29 @@
+{% extends "body.html" %}
+
+{% block content %}
+<form method="post" action="{% url 'erp:category_create'%}">
+    {% csrf_token %}
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">
+                <i class="icon fas fa-plus"></i>
+                {{ title }}
+            </h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <!--Table for category-->
+                {{form}}
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-flat btnTest">
+                    <i class="fas fa-plus"></i> Agregar registro
+                </button>
+            </div>
+            <!--/.Table for category-->
+        </div>
+        <!-- /.card-body -->
+    </div>
+</form>
+
+{% endblock %}
+	
